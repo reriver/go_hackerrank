@@ -2,33 +2,17 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
-func pickingNumbers(a []int32) int32 {
+func rotLeft(a []int32, d int32) []int32 {
 	fmt.Println(a)
-	sort.Slice(a, func(i, j int) bool { return a[i] < a[j] })
-	fmt.Println(a)
-
-	var maxCount int32 = -1
-	var count int32 = 0
-	for i := 0; i < len(a)-1; i++ {
-		if 0 <= a[i+1]-a[i] && a[i+1]-a[i] < 2 {
-			count++
-			if count > maxCount {
-				maxCount = count
-			}
-		} else {
-			count = 0
-		}
-		if a[i+1]-a[i] < 0 {
-			fmt.Errorf("erro array not sorted")
-			return -1
-		}
-		fmt.Println("MaxCount = ", maxCount)
-		fmt.Println("count = ", count)
-	}
-	return maxCount
+	fmt.Println(d)
+	fmt.Println(len(a))
+	res := []int32(a[d:len(a)]) //int32(len(a)) - int32(1) -
+	fmt.Println(res)
+	res = append(res, a[0:d]...)
+	fmt.Println(res)
+	return res
 }
 
 func main() {
@@ -41,14 +25,20 @@ func main() {
 	//
 	//writer := bufio.NewWriterSize(stdout, 16 * 1024 * 1024)
 	//
-	//nTemp, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
+	//firstMultipleInput := strings.Split(strings.TrimSpace(readLine(reader)), " ")
+	//
+	//nTemp, err := strconv.ParseInt(firstMultipleInput[0], 10, 64)
 	//checkError(err)
 	//n := int32(nTemp)
-
+	//
+	//dTemp, err := strconv.ParseInt(firstMultipleInput[1], 10, 64)
+	//checkError(err)
+	//d := int32(dTemp)
+	//
 	//aTemp := strings.Split(strings.TrimSpace(readLine(reader)), " ")
 
-	var a = []int32{4, 6, 5, 3, 3, 1}
-
+	var a = []int32{1, 2, 3, 4, 5}
+	//
 	//for i := 0; i < int(n); i++ {
 	//	aItemTemp, err := strconv.ParseInt(aTemp[i], 10, 64)
 	//	checkError(err)
@@ -56,10 +46,18 @@ func main() {
 	//	a = append(a, aItem)
 	//}
 
-	result := pickingNumbers(a)
+	result := rotLeft(a, 4)
 
-	fmt.Printf("%d\n", result)
+	for i, resultItem := range result {
+		fmt.Printf("%d", resultItem)
 
+		if i != len(result)-1 {
+			fmt.Printf(" ")
+		}
+	}
+
+	fmt.Println("\n")
+	//
 	//writer.Flush()
 }
 
