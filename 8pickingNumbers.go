@@ -12,7 +12,7 @@ func pickingNumbers(a []int32) int32 {
 
 	var maxCount int32 = -1
 	var count int32 = 1
-	for i := 0; i < len(a); i++ {
+	for i := 0; i < len(a)-1; i++ {
 		if 0 < a[i+1]-a[i] && a[i+1]-a[i] < 2 {
 			count++
 			if count > maxCount {
