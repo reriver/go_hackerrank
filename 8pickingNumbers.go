@@ -23,7 +23,7 @@ func pickingNumbers(a []int32) int32 {
 			count = 0
 		}
 		if a[i+1]-a[i] <= 0 {
-			fmt.Errorf("erro array not sorted")
+			fmt.Errorf("error array not sorted")
 			return -1
 		}
 		fmt.Println("MaxCount = ", maxCount)
