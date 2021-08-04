@@ -6,24 +6,12 @@ import (
 )
 
 func hourglass(arr [][]int32, x int, y int) int32 {
-	//var res [][]int32
-	//var row1 = []int32 {arr[x-1][y-1], arr[x+0][y-1], arr[x+1][y-1]}
-	//var row2 = []int32 {            0, arr[x+0][y+0],             0}
-	//var row3 = []int32 {arr[x-1][y+1], arr[x+0][y+1], arr[x+1][y+1]}
-	//
-	//res = append(res, row1)
-	//res = append(res, row2)
-	//res = append(res, row3)
 	res := arr[y-1][x-1] + arr[y-1][x] + arr[y-1][x+1] + arr[y][x] + arr[y+1][x-1] + arr[y+1][x] + arr[y+1][x+1]
-
-	fmt.Println(res)
-
 	return res
 
 }
 
 func hourglassSum(arr [][]int32) int32 {
-	fmt.Println(arr)
 	max := int32(math.MinInt32)
 	curMax := int32(0)
 
